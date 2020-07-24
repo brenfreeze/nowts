@@ -18,7 +18,7 @@ const Note = ({ match, history }) => {
       setTitle(viewNote.title)
       setMarkdown(viewNote.body)
     }
-  }, [])
+  }, [match.params.param, notes])
 
   const saveNowt = () => {
     dispatch({
@@ -66,13 +66,7 @@ const Note = ({ match, history }) => {
             onChange={({html, text}) => {
               setMarkdown(text)
             }}
-          />  
-          {/* <div className="custom-html-style">
-            <h1>Hello</h1>
-            <blockquote>
-              <p>Blockquotes test</p>
-            </blockquote>
-          </div> */}
+          />
         </div>
         <div className="footer">
           <div className="button-nowt" onClick={match.params.param === 'new' ? saveNowt : updateNowt}>

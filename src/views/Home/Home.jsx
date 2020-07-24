@@ -6,8 +6,7 @@ const Home = ({ history }) => {
   const { 
     state: { 
       notes 
-    }, 
-    dispatch 
+    }
   } = useContext(store)
 
   return (
