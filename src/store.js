@@ -5,7 +5,7 @@ const initialState = {
     {
       id: 0,
       title: 'Hello',
-      body: '# Hello \n * hi \n * hey'
+      body: '# Hello \n --- \n * hi \n * hey'
     }
   ]
 }
@@ -15,7 +15,15 @@ const { Provider } = store
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
+    const {
+      notes
+    } = state
+
     switch(action.type) {
+      case 'ADD_NOTE':
+        notes.push(action.payload)
+        
+        return state
       default:
         throw new Error()
     }

@@ -1,0 +1,62 @@
+.note-container {
+  display: grid;
+  grid-template-rows: 180px auto 80px;
+  grid-template-areas: 
+    "title"
+    "editor"
+    "footer"
+  ;
+
+  width: 100%;
+  max-width: var(--max-width);
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  > .title {
+    grid-area: title;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > .title-input {
+      font-family: inherit;
+      font-size: 5rem;
+      width: 100%;
+      color: var(--color-primary);
+      border: none;
+      background: transparent;
+      outline: none;
+      border-bottom: 2px solid var(--bg-color-darker);
+
+      &:focus {
+        border-color: var(--bg-color-darkest);
+      }
+
+      transition: var(--transition);
+    }
+  }
+
+  > .editor {
+    grid-area: editor;
+  }
+
+  > .footer {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
+.close-btn {
+  position: fixed;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  line-height: 3rem;
+  top: 2rem;
+  right: 2rem;
+  outline: none;
+  cursor: pointer;
+}
