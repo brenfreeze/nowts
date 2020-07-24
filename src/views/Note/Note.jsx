@@ -24,7 +24,7 @@ const Note = ({ match, history }) => {
     dispatch({
       type: 'ADD_NOTE',
       payload: {
-        id: Math.random(),
+        id: Math.floor(Math.random() * 9999) + 1  ,
         title,
         body: markdown,
       }
