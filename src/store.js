@@ -1,11 +1,11 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useReducer, useEffect } from 'react'
 
 const initialState = {
   notes: [
     {
       id: 0,
       title: 'Hello',
-      body: '# Hello \n --- \n * hi \n * hey'
+      body: '# Hello \n --- \n Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus deserunt suscipit molestiae? Sunt iure omnis fugiat voluptates atque nostrum illo.'
     }
   ]
 }
@@ -15,14 +15,17 @@ const { Provider } = store
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
-    const {
-      notes
-    } = state
+    const { notes } = state
 
     switch(action.type) {
       case 'ADD_NOTE':
         notes.push(action.payload)
         
+        return state
+      case 'UPDATE_NOTE':
+        const toUpdate = notes.find(note => note.id === action.payload.id)
+        notes.splice(notes.indexOf(toUpdate), 1, action.payload)
+
         return state
       default:
         throw new Error()

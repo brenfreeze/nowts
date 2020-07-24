@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { store } from '../../store'
 import MarkdownIt from 'markdown-it'
 import MdEditor from 'react-markdown-editor-lite'
@@ -6,10 +6,19 @@ import MdEditor from 'react-markdown-editor-lite'
 const md = new MarkdownIt()
 
 const Note = ({ match, history }) => {
-  const { dispatch } = useContext(store)
+  const { state: { notes }, dispatch } = useContext(store)
 
   const [title, setTitle] = useState('')
   const [markdown, setMarkdown] = useState('')
+
+  useEffect(() => {
+    const viewNote = notes.find(note => note.id.toString() === match.params.param)
+  
+    if (viewNote) {
+      setTitle(viewNote.title)
+      setMarkdown(viewNote.body)
+    }
+  }, [])
 
   const saveNowt = () => {
     dispatch({
@@ -17,7 +26,20 @@ const Note = ({ match, history }) => {
       payload: {
         id: Math.random(),
         title,
-        bodt: markdown
+        body: markdown,
+      }
+    })
+
+    history.push('/')
+  }
+
+  const updateNowt = () => {
+    dispatch({
+      type: 'UPDATE_NOTE',
+      payload: {
+        id: parseInt(match.params.param),
+        title,
+        body: markdown,
       }
     })
 
@@ -53,7 +75,7 @@ const Note = ({ match, history }) => {
           </div> */}
         </div>
         <div className="footer">
-          <div className="button-nowt" onClick={saveNowt}>
+          <div className="button-nowt" onClick={match.params.param === 'new' ? saveNowt : updateNowt}>
             save
           </div>
         </div>

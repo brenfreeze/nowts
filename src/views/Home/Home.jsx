@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { store } from '../../store'
+import MarkdownIt from 'markdown-it'
 
 const Home = ({ history }) => {
   const { 
@@ -31,9 +32,12 @@ const Home = ({ history }) => {
         <div className="main-content">
           {
             notes.map(note => {
+              const md = new MarkdownIt()
+
               return (
-                <div className="notes-mini">
+                <div className="notes-mini" onClick={() => history.push(`/nowt/${note.id}`)}>
                   <h3>{note.title}</h3>
+                  <div dangerouslySetInnerHTML={{ __html: md.render(note.body) }} />
                 </div>
               )
             })
