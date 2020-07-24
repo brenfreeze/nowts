@@ -1,0 +1,18 @@
+.header {
+  grid-area: header;
+  background-color: var(--bg-color-darkest);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  height: 64px;
+  width: 100%;
+  box-shadow: var(--box-shadow-header);
+
+  > span {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+}

@@ -4,7 +4,8 @@ const initialState = {
   notes: [
     {
       id: 0,
-      body: '# Hello'
+      title: 'Hello',
+      body: '# Hello \n * hi \n * hey'
     }
   ]
 }

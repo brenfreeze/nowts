@@ -4,7 +4,15 @@
   --bg-color: #f0ece3;
   --bg-color-darker: #dfd3c3;
   --bg-color-darkest: #c7b198;
+
   --color-primary: #596e79;
+
+  --max-width: 1080px;
+  --header-height: 64px;
+  --hero-height: 250px;
+  
+  --box-shadow-header: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+  --box-shadow-notes-mini: 0 0 15px -2px rgb(199, 177, 152, 0.5);
 }
 
 *, *::before, *::after {
