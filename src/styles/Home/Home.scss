@@ -1,0 +1,52 @@
+.container {
+  display: grid;
+  grid-template-rows: 64px 250px auto;
+  grid-template-areas: 
+  "header" 
+  "hero"
+  "main";
+  min-height: 100vh;
+}
+
+.header {
+  grid-area: header;
+  background-color: var(--bg-color-darkest);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > span {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+}
+
+.hero {
+  grid-area: hero;
+  background-color: var(--bg-color-darker);
+
+  > .hero-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .content {
+      
+      > .display-text {
+        font-size: 5rem;
+        margin: 0;
+      }
+
+      > p {
+        margin: 0;
+      }
+    }
+  }
+}
